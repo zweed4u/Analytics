@@ -7,6 +7,9 @@ soup=BeautifulSoup.BeautifulSoup(r.content)
 for cardListing in soup.find("ul", {"id": "GalleryViewInner"}).findAll('li'):
     #parse element for title and sold price and when
     #store all prices in array for maths - min, max, mean, volatility    
-    print cardListing
+    print cardListing.find('h3').text
+    st=cardListing.findAll("div", {"class":"gvprices"})[0].text.split('$')[1]
+    price=st[:st.index('.')+3]
+    type=st[st.index('.')+3:]
+    print price, type
     print
-    
